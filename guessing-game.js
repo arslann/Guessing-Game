@@ -7,11 +7,20 @@ const rl = readline.createInterface({
 
 
 let secretNumber = randomInRange(1, 100);
+let numAttempts = 5;
 
 
 function askGuess() {
-    rl.question("Enter a guess: ", (answer) => {
 
+
+    if (numAttempts === 0) {
+        console.log("You Lose")
+        rl.close();
+        return;
+    }
+
+    rl.question("Enter a guess: ", (answer) => {
+        numAttempts--;
         let isCorrect = checkGuess(Number(answer));
 
         if (!isCorrect) {
