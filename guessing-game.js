@@ -42,4 +42,27 @@ function randomInRange(min, max) {
 
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
-askGuess();
+
+function askRange() {
+    let max;
+    let min;
+
+    const maxNumber = (answer) => {
+        max = Number(answer);
+        console.log("Max number is " + answer);
+        rl.question("Enter a min number: ", minNumber)
+
+    }
+
+    const minNumber = (answer) => {
+        min = Number(answer);
+        console.log("Min number is " + answer);
+        secretNumber = randomInRange(min, max);
+        askGuess();
+    }
+
+    rl.question("Enter a max number: ", maxNumber);
+
+
+}
+askRange();
