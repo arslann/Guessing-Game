@@ -6,7 +6,7 @@ const rl = readline.createInterface({
 });
 
 
-let secretNumber = 18;
+let secretNumber = randomInRange(1, 100);
 
 
 function askGuess() {
@@ -34,5 +34,12 @@ function checkGuess(num) {
         console.log("Correct!")
         return true;
     }
+}
+
+function randomInRange(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+
+    return Math.floor(Math.random() * (max - min + 1) + min);
 }
 askGuess();
