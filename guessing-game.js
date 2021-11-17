@@ -11,8 +11,15 @@ let secretNumber = 18;
 
 function askGuess() {
     rl.question("Enter a guess: ", (answer) => {
-        checkGuess(Number(answer));
-        rl.close();
+
+        let isCorrect = checkGuess(Number(answer));
+
+        if (!isCorrect) {
+            askGuess();
+        } else {
+            console.log("You win!")
+            rl.close();
+        }
     })
 }
 
